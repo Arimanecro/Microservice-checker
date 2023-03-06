@@ -2,13 +2,13 @@ import { Socket } from "node:net";
 import { workerData } from "node:worker_threads";
 import { microservices } from "./ms-list.js";
 
-var testFunc = () => {
+const testFunc = () => {
   let test1 = [["127.0.0.1", "3001", "127.0.0.1:3002"]];
   let test2 = [["127.0.0.1", "3003", "127.0.0.1:3004"],["127.0.0.1", "3004"]];
   return process.env.MICROSERVICES === "1" ? test1 : test2;
 }
 
-var test = process.env.MICROSERVICES && testFunc();
+const test = process.env.MICROSERVICES && testFunc();
 var services = test || microservices;
 
 var { uint8 } = workerData;
